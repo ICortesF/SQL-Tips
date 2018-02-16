@@ -16,5 +16,6 @@ Añadimos la clausala COLLATE DATABASE_DEFAULT en los JOIN o los WHERE
  and a.municipiid = municipi.municipiid COLLATE DATABASE_DEFAULT) ,*
  from municipi
  where paisid = '034' 
+```
 
 
