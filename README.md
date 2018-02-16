@@ -1,7 +1,4 @@
 # SQL-Tips
-## Conectar a localdb
-
-Servidor (localdb)\MSSQLLocalDB
 
 ## Error al comparar cadenas con diferente ordenación
 
@@ -17,5 +14,9 @@ Añadimos la clausala COLLATE DATABASE_DEFAULT en los JOIN o los WHERE
  from municipi
  where paisid = '034' 
 ```
+
+## Conectar a localdb
+
+Servidor (localdb)\MSSQLLocalDB
 
 
