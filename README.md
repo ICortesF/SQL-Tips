@@ -12,3 +12,7 @@ Añadimos la clausala COLLATE DATABASE_DEFAULT en los JOIN o los WHERE
 ``` where a.provinciid = municipi.provinciid COLLATE DATABASE_DEFAULT and a.municipiid = municipi.municipiid COLLATE DATABASE_DEFAULT) ,*
 ``` from municipi
 ```  where paisid = '034'
+
+## Conectar a localdb
+
+Servidor (localdb)\MSSQLLocalDB
