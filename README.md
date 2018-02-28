@@ -19,4 +19,34 @@ Añadimos la clausala COLLATE DATABASE_DEFAULT en los JOIN o los WHERE
 
 Servidor (localdb)\MSSQLLocalDB
 
+## Ejemplo de trigger que simula un identity en un campo int o bigint que no lo es
+create trigger tbl_i
+on dbo.test
+INSTEAD OF insert
+as 
+begin
+declare @maxitem_id int
+declare @codigo char(2)
+declare @otromas char(10)
 
+declare ins cursor LOCAL FAST_FORWARD for select codigo,otromas from inserted
+
+-- Get the current maximum. Use 1 if no rows ...
+set @maxitem_id = null
+select @maxitem_id = max(id) + 1 from dbo.test
+if @maxitem_id is null set @maxitem_id = 1
+
+open ins
+goto NEXTins
+
+while @@fetch_status = 0
+begin
+insert dbo.test (id,codigo,otromas ) values (@maxitem_id,@codigo,@otromas)
+set @maxitem_id = @maxitem_id + 1
+NEXTins: fetch ins into @codigo,@otromas
+end
+close ins
+deallocate ins
+
+end
+go
